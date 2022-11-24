@@ -41,7 +41,7 @@ app.use(
 
 require("./database").connect();
 
-const PORT = 4000 || process.env.port;
+const PORT =  process.env.port || 4000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
