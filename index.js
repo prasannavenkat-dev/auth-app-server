@@ -49,6 +49,11 @@ const PORT =  process.env.PORT || 4000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+app.get("/",function(req,res){
+  res.send("Auth App Server!!")
+})
+
 app.post("/signup", async function (req, res) {
   try {
     let { email, password, mobile, name, place } = req.body;
