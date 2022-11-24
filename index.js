@@ -43,7 +43,7 @@ app.use(cors(corsOptions)); // Use this after the variable declaration
 
 require("./database").connect();
 
-const PORT =  process.env.port || 4000;
+const PORT =  process.env.PORT || 4000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
