@@ -34,20 +34,12 @@ const cors = require("cors");
 const corsOptions = {
   origin: "*",
   credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-  "Access-Control-Allow-Origin": "*"
+  optionSuccessStatus: 200
 };
 
 app.use(cors(corsOptions)); // Use this after the variable declaration
 
 
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-  });
 
 
 require("./database").connect();
@@ -115,7 +107,7 @@ app.post("/signup", async function (req, res) {
   }
 });
 
-app.post("/signin", async function (req, res) {
+app.post("/signin",cors(corsOptions) ,async function (req, res) {
   try {
     let { email, password } = req.body;
 
