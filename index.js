@@ -41,6 +41,15 @@ const corsOptions = {
 app.use(cors(corsOptions)); // Use this after the variable declaration
 
 
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+  });
+
+
 require("./database").connect();
 
 const PORT =  process.env.PORT || 4000;
